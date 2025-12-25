@@ -1,5 +1,7 @@
 # RFBridge Demux (AppDaemon)
 
+Based on https://community.home-assistant.io/t/sonoff-rf-bridge-strategies-for-receiving-data/108181. 
+
 RFBridge Demux is an AppDaemon app for Home Assistant that converts raw RF data
 from one or more Tasmota RF Bridges into clean, reliable MQTT topics and entities.
 
