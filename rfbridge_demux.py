@@ -20,7 +20,7 @@ class RFBridgeDemux(hass.Hass):
         self.notify_service = self.args.get("notify_service")
 
         # --- Logging (MATCH NotificationLogger) ---
-        self.log_dir = self.args.get("log_dir", "/config/www")
+        self.log_dir = self.args.get("log_dir", "/homeassistant/www")
         os.makedirs(self.log_dir, exist_ok=True)
         self.file_lock = Lock()
 
@@ -150,7 +150,7 @@ class RFBridgeDemux(hass.Hass):
 
             self.discovered_unknowns.add(code)
             self._save_json_set(self.persist_unknowns_file, self.discovered_unknowns)
-            self._notify(f"🆕 New RF sensor discovered: {code}")
+            self._notify(f"New RF sensor discovered: {code}")
 
         self.call_service(
             "mqtt/publish",
@@ -196,11 +196,11 @@ class RFBridgeDemux(hass.Hass):
     # ==========================================================
     def _check_signal_degradation(self, code, b):
         if b["count"] >= 10 and b["avg_sync"] > 26000:
-            self._notify(f"⚠ RF {code}: signal degradation")
+            self._notify(f"RF {code}: signal degradation")
 
     def _check_battery_health(self, code, b):
         if b["count"] >= 20 and (b["avg_high"] > 2600 or b["avg_low"] > 900):
-            self._notify(f"🔋 RF {code}: possible low battery")
+            self._notify(f"RF {code}: possible low battery")
 
     # ==========================================================
     # ACTIVITY LOGGING (MATCH NotificationLogger)
