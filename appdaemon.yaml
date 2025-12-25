@@ -1,0 +1,38 @@
+# ==========================================================
+# AppDaemon – Example configuration
+# ==========================================================
+# Copy this content to appdaemon.yaml, replace placeholder
+# values with your own environment settings. Be careful about
+# indentation, and if you copy-paste be vary of whitespace. 
+# ==========================================================
+
+appdaemon:
+  latitude: 00.0000        # Your latitude (decimal)
+  longitude: 0.0000        # Your longitude (decimal)
+  elevation: 0             # Elevation in meters
+  time_zone: Region/City   # Example: Europe/Brussel
+
+  plugins:
+    MQTT:
+      type: mqtt
+
+      # ------------------------------------------------------
+      # MQTT broker connection
+      # ------------------------------------------------------
+      client_host: mqtt_broker_ip_or_hostname   # Example: 192.168.1.10
+      client_port: 1883                         # Default MQTT port
+
+      client_id: appdaemon
+
+      # ------------------------------------------------------
+      # MQTT event integration
+      # ------------------------------------------------------
+      event_name: mqtt_message                  # Must match AppDaemon listeners
+      namespace: mqtt
+
+      # ------------------------------------------------------
+      # Subscribed topics
+      # ------------------------------------------------------
+      # This example listens for Tasmota RF Bridge RESULT messages
+      client_topics:
+        - tele/+/RESULT
