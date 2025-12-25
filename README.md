@@ -37,11 +37,11 @@ logging, and signal-quality tracking — without cluttering Home Assistant YAML.
 
 | Purpose | Path |
 |------|------|
-| App code | `/config/appdaemon/apps/rfbridge_demux.py` |
-| Daily activity logs | `/config/www/rfbridge_activity_YYYY-MM-DD.jsonl` |
-| Signal statistics | `/config/www/rfbridge_signal_stats.json` |
-| Event counters | `/config/www/rfbridge_counters.json` |
-| Persisted unknown sensors | `/config/rfbridge_discovered_unknowns.json` |
+| App code | `/homeassistant/appdaemon/apps/rfbridge_demux.py` |
+| Daily activity logs | `/homeassistant/www/rfbridge_activity_YYYY-MM-DD.jsonl` |
+| Signal statistics | `/homeassistant/www/rfbridge_signal_stats.json` |
+| Event counters | `/homeassistant/www/rfbridge_counters.json` |
+| Persisted unknown sensors | `/homeassistant/rfbridge_discovered_unknowns.json` |
 
 ---
 
