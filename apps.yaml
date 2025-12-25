@@ -1,0 +1,42 @@
+# ==========================================================
+# RFBridgeDemux – Example AppDaemon configuration
+# ==========================================================
+# Insert this to apps.yaml and adjust values and indentation
+# to match your Home Assistant and MQTT setup.
+# Make sure you setup MQTT in Appdaemon, see example in 
+# appdaemon.yaml. 
+# ==========================================================
+
+rfbridge_demux:
+  module: rfbridge_demux
+  class: RFBridgeDemux
+
+  # ----------------------------------------------------------
+  # Timing / behavior
+  # ----------------------------------------------------------
+  debounce_seconds: 1.5          # Ignore duplicate RF codes within this time window
+  default_off_delay: 60          # Seconds before unknown sensors auto-reset to OFF
+
+  # ----------------------------------------------------------
+  # MQTT configuration
+  # ----------------------------------------------------------
+  unknown_base_topic: "home/unknown"
+  discovery_prefix: "homeassistant"
+
+  # ----------------------------------------------------------
+  # Logging and persistence
+  # Paths must be writable by AppDaemon
+  # ----------------------------------------------------------
+  log_dir: /homeassistant/www/logs
+
+  persist_unknowns_file: /homeassistant/www/logs/rfbridge_discovered_unknowns.json
+  counters_file: /homeassistant/www/logs/rfbridge_counters.json
+  signal_stats_file: /homeassistant/www/logs/rfbridge_signal_stats.json
+
+  # ----------------------------------------------------------
+  # Optional notifications
+  # Format: <domain>/<service>
+  # Example: notify/mobile_app_my_phone
+  # Leave unset to disable notifications
+  # ----------------------------------------------------------
+  notify_service: notify/mobile_app_example_device
